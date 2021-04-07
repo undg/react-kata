@@ -1,12 +1,15 @@
 export class IsDev {
-    public static status = false
+    public static on = false
+    public static off = true
 
-    public static on(): void {
-        this.status = true
+    public static setOn(): void {
+        this.on = true
+        this.off = false
     }
 
-    public static off(): void {
-        this.status = false
+    public static setOff(): void {
+        this.on = false
+        this.off = true
     }
 
     public static setControllerInBrowser() {
@@ -83,9 +86,9 @@ export function isDevControllerInBrowser() {
 
     function setInStorage() {
         if (getIsDev()) {
-            IsDev.on()
+            IsDev.setOn()
         } else {
-            IsDev.off()
+            IsDev.setOff()
         }
     }
 }

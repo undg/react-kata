@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import { App } from './App'
 import reportWebVitals from './reportWebVitals'
-import { IsDev } from './util/isDev'
+import { IsDev } from './utils'
 
 // I like use this flag to mock api's and stop care about networking while developing.
 // When it is set in local Storage, it can be controlled from browser console `isDev.toggle()`.
 IsDev.setControllerInBrowser()
-// Simpler option is to hardcode it here with 
-// `IsDev.on()`
+// Simpler option is to hardcoded it as it is done in test setup.
+// `IsDev.setOn()`
+// It was priceless for developing in offline mode (London tube).
 
 
 ReactDOM.render(
