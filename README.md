@@ -27,7 +27,7 @@ yarn start
       * index.tsx - `IsDev.setControllerInBrowser()`
       * mocking functions = IsDev.off ? realFunction : mockFunction
       * tests - `IsDev.setOff(); (...test something without mocking); IsDev.setOn() (...back to mocked env)`
-      * browser - https://i.imgur.com/SF0OJJV.png
+      * browser - ![DevTools](https://i.imgur.com/SF0OJJV.png)
 2. App.tsx - is used as only wrapper to compose data and view components. 
 3. <TopStoriesContextProvider> - this component is responsible for getting, keeping and providing data from API
 4. <TopStoriesComponent> and <FakeEmptyComponent> - 100% view layer
