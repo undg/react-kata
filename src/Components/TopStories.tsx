@@ -18,11 +18,10 @@ export const TopStoriesComponent: React.FC = () => {
 export const TopStoriesItem: React.FC<HackerNewsItem> = (props) => {
     return (
         <>
-            <a className="stories__item__link" href={props.url}>
-                <h3 className="stories__item__title">{props.title}</h3>
-            </a>
+            <h3 className="stories__item__title">{props.title}</h3>
             <p className="stories__item__author">by: {props.by}</p>
             <div className="stories__item__date">{new Date(props.time).toDateString()}</div>
+            <a className="stories__item__link" href={props.url}>Link</a>
             <hr />
         </>
     )

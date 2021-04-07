@@ -9,11 +9,19 @@ describe('<TopStoriesComponent>', () => {
 })
 
 describe('<TopStoriesItem>', () => {
-    it('render TopStoriesItem have all neccesarry classes and elements', () => {
-        const wrapper = shallow(<TopStoriesItem {...mockApiRes.item0 as HackerNewsItem} />)
-        expect(wrapper.find('.stories__item__title')).toHaveLength(1)
-        expect(wrapper.find('.stories__item__link')).toHaveLength(1)
-        expect(wrapper.find('.stories__item__author')).toHaveLength(1)
-        expect(wrapper.find('.stories__item__date')).toHaveLength(1)
+    describe('render TopStoriesItem have all neccesarry elements', () => {
+        const wrapper = shallow(<TopStoriesItem {...(mockApiRes.item0 as HackerNewsItem)} />)
+        it('have title', () => {
+            expect(wrapper.text()).toContain('Title for single item')
+        })
+        it('have author', () => {
+            expect(wrapper.text()).toContain('by: Single item author')
+        })
+        it('have date', () => {
+            expect(wrapper.text()).toContain('Mon Jan 19 1970')
+        })
+        it('have button', () => {
+            expect(wrapper.text()).toContain('Link')
+        })
     })
 })
