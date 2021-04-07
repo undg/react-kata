@@ -29,8 +29,8 @@ yarn start
       * tests - `IsDev.setOff(); (...test something without mocking); IsDev.setOn() (...back to mocked env)`
       * browser - ![DevTools](https://i.imgur.com/SF0OJJV.png)
 2. App.tsx - is used as only wrapper to compose data and view components. 
-3. <TopStoriesContextProvider> - this component is responsible for getting, keeping and providing data from API
-4. <TopStoriesComponent> and <FakeEmptyComponent> - 100% view layer
+3. TopStoriesContextProvider - this component is responsible for getting, keeping and providing data from API
+4. TopStoriesComponent and FakeEmptyComponent - 100% view layer
 5. api/fetchApi.ts - wrapper for fetch and mockFetch. Real fetch() is easy to understand, mockFetch() is allowing
     mitigate any networking and use stored data in api/fetchApi.mocks.ts.
 6. Tests - Mostly it was done with TDD however I have few untested places.
