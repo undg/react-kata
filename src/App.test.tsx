@@ -10,8 +10,8 @@ describe('Render UI', () => {
     })
     it('render title', async () => {
         await act(async () => render(<App />))
-        const title = screen.getByText('Title for single item')
-        expect(title).toBeInTheDocument()
+        const title = screen.getAllByText('Title for single item')
+        expect(title).toHaveLength(10)
     })
 })
 

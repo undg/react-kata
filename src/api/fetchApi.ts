@@ -35,12 +35,13 @@ export async function mockFetch(url: RequestInfo, init?: RequestInit | undefined
 function mockJsonRes(endpoint: RequestInfo) {
     const endpointIsItem = RegExp(/^item\/item\d+$/).test(endpoint.toString())
 
-    const randomNumber = Math.floor(Math.random() * 11) // there is 10 mocked api endpoints
-    const randomItem = ('item' + randomNumber) as MockApiEndpoint // pick one randomly
+    const randomNumber = Math.floor(Math.random() * 10) // there are 10 mocked api endpoints (what is small lie 🤫)
+    const randomIdx = ('item' + randomNumber) as MockApiEndpoint // pick one randomly
+    const randomSingleItem = { ...mockApiRes[randomIdx], id: Math.random() * 100000 }
 
     // prettier-ignore
-    return endpoint === MockApiEndpoint.mockTest   ? mockApiRes.mockTest     // used for testing mocking itself
-         : endpoint === MockApiEndpoint.topstories ? mockApiRes.topstories   // topstories
-         : endpointIsItem                          ? mockApiRes[randomItem]  // random single item
+    return endpoint === MockApiEndpoint.mockTest   ? mockApiRes.mockTest     // used to test mocking itself
+         : endpoint === MockApiEndpoint.topstories ? mockApiRes.topstories
+         : endpointIsItem                          ? randomSingleItem
          : mockApiRes.missingMock // default
 }

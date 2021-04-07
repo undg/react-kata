@@ -8,7 +8,7 @@ import { IsDev } from './utils'
 // I like use this flag to mock api's and stop care about networking while developing.
 // When it is set in local Storage, it can be controlled from browser console `isDev.toggle()`.
 IsDev.setControllerInBrowser()
-// Simpler option is to hardcoded it as it is done in test setup.
+// Simpler option is to hardcoding it as it is done in test setup.
 // `IsDev.setOn()`
 // It was priceless for developing in offline mode (London tube).
 // https://i.imgur.com/SF0OJJV.png
