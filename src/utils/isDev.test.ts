@@ -1,4 +1,4 @@
-import { IsDev } from './isDev'
+import { IsDev } from '.'
 
 describe('IsDevelopMode', () => {
     it('should change mode to develop', () => {
