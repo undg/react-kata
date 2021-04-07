@@ -11,6 +11,7 @@ IsDev.setControllerInBrowser()
 // Simpler option is to hardcoded it as it is done in test setup.
 // `IsDev.setOn()`
 // It was priceless for developing in offline mode (London tube).
+// https://i.imgur.com/SF0OJJV.png
 
 
 ReactDOM.render(

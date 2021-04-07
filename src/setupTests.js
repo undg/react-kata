@@ -7,3 +7,8 @@ import { IsDev } from './utils'
 
 // Check src/index.tsx for explanation
 IsDev.setOn()
+
+import { configure } from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+
+configure({ adapter: new Adapter() });

@@ -1,20 +1,19 @@
-import { useEffect } from 'react'
-import './App.css'
+import React from 'react'
+import { FakeEmptyComponent, TopStoriesComponent } from './Components'
+import { TopStoriesContextProvider } from './context'
 
-export function App() {
-    useEffect(() => {
-        // Example call to the Hackernews API.
-        // Feel free to delete
-        fetch('https://hacker-news.firebaseio.com/v0/item/8863.json')
-            .then((response) => response.json())
-            .then((data) => console.log(data))
-    })
-
+export const App: React.FC = () => {
     return (
-        <>
-            <div className="App" data-testid="app">
-                TODO: Monaco Solicitors React Coding Test
-            </div>
-        </>
+        <div className="App" data-testid="app">
+            <TopStoriesContextProvider>
+
+                <TopStoriesComponent />
+
+                <FakeEmptyComponent />
+                <FakeEmptyComponent />
+                <FakeEmptyComponent />
+            </TopStoriesContextProvider>
+        </div>
     )
 }
+

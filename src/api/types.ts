@@ -31,6 +31,6 @@ export interface HackerNewsItem {
 export type HackerNewsTopStories = string[]
 
 export interface EmptyMock {
-    msg: string
+    title: string
 }
 
