@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Start
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+yarn
+yarn test
+yarn start
+```
 
-## Available Scripts
+# Tech stack
 
-In the project directory, you can run:
+* react
+* context
+* typescript
+* jest
+* enzyme
+* mocking
+* TDD
 
-### `yarn start`
+# Flow
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. index.tsx - this file have one small change that allowing me mock fetch not only in tests but anywhere I like.
+    I like use this flag to mock api's and stop care about networking while developing.
+    When it is set in local Storage, it can be controlled from browser console by writing `isDev.toggle()`.
+    `isDev` is global and have few helper methods. global.isDev IS NOT MEANT TO BE USED in code. 
+    There is `class IsDev` that is not in global scope and SHOULD BE USED in tests and code to set and control dev or
+    live environment.
+      * index.tsx - `IsDev.setControllerInBrowser()`
+      * mocking functions = IsDev.off ? realFunction : mockFunction
+      * tests - `IsDev.setOff(); (...test something without mocking); IsDev.setOn() (...back to mocked env)`
+      * browser - https://i.imgur.com/SF0OJJV.png
+2. App.tsx - is used as only wrapper to compose data and view components. 
+3. <TopStoriesContextProvider> - this component is responsible for getting, keeping and providing data from API
+4. <TopStoriesComponent> and <FakeEmptyComponent> - 100% view layer
+5. api/fetchApi.ts - wrapper for fetch and mockFetch. Real fetch() is easy to understand, mockFetch() is allowing
+    mitigate any networking and use stored data in api/fetchApi.mocks.ts.
+6. Tests - Mostly it was done with TDD however I have few untested places.
+7. Typescript - Not everything have interface, ts was used just to fill gaps, where dynamic types ware not passed.
+8. There are few small shortcuts like nasty use of `as` in typescript, lazy mocking same item 10 times, no css,
+    and finally mocking whole fetch, instead of spinning local api server.
